@@ -1,15 +1,63 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="grid gap-y-5">
+    <cardComponent
+      v-for="(p, index) in project"
+      :key="index"
+      :item="p"
+    ></cardComponent>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<script>
+import fmsImage from "../assets/fms.png";
+import nftImage from "../assets/nft2.png";
+import wiseImage from "../assets/wise.png";
+import cardComponent from "@/components/cardComponent.vue";
+export default {
+  components: { cardComponent },
+  data() {
+    return {
+      project: [
+        {
+          no: 1,
+          title: "Facility Management System",
+          description:
+            "Software solution designed to help organizations efficiently manage and optimize their physical assets and facilities. This includes buildings, equipment, resources, and other assets critical to the organization's operations.",
+          link: "http://myces-fms.com/#/Home",
+          tech: [
+            "Vue JS",
+            "Nest JS",
+            "HTML/CSS",
+            "Javascript",
+            "Typescript",
+            "Quasar",
+          ],
+          image: fmsImage,
+        },
+        {
+          no: 2,
+          title: "NeedForTrees",
+          description:
+            "Built using Vue.js, this responsive website introduces NeedForTrees, a project aimed at raising awareness about deforestation and showcasing cutting-edge NFT technology.",
+          link: "http://needfortrees.io/",
+
+          tech: ["Vue JS", "HTML/CSS", "Javascript", "Bootstrap"],
+          image: nftImage,
+        },
+        {
+          no: 3,
+          title: "Wise Premium",
+          description:
+            "Designed using Vue.js and featuring multilingual support in Mandarin and English, this responsive website serves as the gateway to an exclusive club experience. Explore a world of luxury living, concierge services, lucrative affiliate programs, and more.",
+          link: "http://178.128.49.253/",
+
+          tech: ["Vue JS", "HTML/CSS", "Javascript", "Bootstrap"],
+          image: wiseImage,
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style></style>

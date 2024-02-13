@@ -6,14 +6,15 @@
         :key="key"
         :class="
           nav.active
-            ? 'bg-tertiary-color text-primary-color rounded-box active'
+            ? 'bg-text-color text-primary-color rounded-box active'
             : 'bg-base-200 rounded-box'
         "
       >
-        <!-- Use router-link instead of a tag -->
         <router-link :to="{ name: nav.link }">
           <span class="material-symbols-outlined"> {{ nav.icon }} </span>
-          <div v-if="nav.active">{{ nav.name }}</div>
+          <transition name="fade">
+            <div v-if="nav.active">{{ nav.name }}</div>
+          </transition>
         </router-link>
       </li>
     </ul>
@@ -22,30 +23,31 @@
 
 <script>
 export default {
-  data() {
-    return {
-      navigation: [
-        {
-          name: "About Me",
-          link: "home",
-          icon: "person",
-          active: false,
-        },
-        {
-          name: "Experience",
-          link: "exp",
-          icon: "work",
-          active: false,
-        },
-        {
-          name: "Projects",
-          link: "about",
-          icon: "code",
-          active: false,
-        },
-      ],
-    };
-  },
+  props: ["navigation"],
+  //   data() {
+  //     return {
+  //       navigation: [
+  //         {
+  //           name: "About Me",
+  //           link: "home",
+  //           icon: "person",
+  //           active: false,
+  //         },
+  //         {
+  //           name: "Experience",
+  //           link: "exp",
+  //           icon: "work",
+  //           active: false,
+  //         },
+  //         {
+  //           name: "Projects",
+  //           link: "about",
+  //           icon: "code",
+  //           active: false,
+  //         },
+  //       ],
+  //     };
+  //   },
   watch: {
     $route(to, from) {
       // Find the navigation item that matches the current route name
@@ -59,10 +61,10 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener("wheel", this.handleScroll);
+    // window.addEventListener("wheel", this.handleScroll);
   },
   beforeDestroy() {
-    window.removeEventListener("wheel", this.handleScroll);
+    // window.removeEventListener("wheel", this.handleScroll);
   },
   methods: {
     handleScroll(event) {
@@ -106,7 +108,7 @@ export default {
   justify-content: left;
   align-items: center;
   height: 100dvh; /* Full height of the viewport */
-  z-index: 99999; /* High z-index value to ensure it's above all other elements */
+  z-index: 1; /* High z-index value to ensure it's above all other elements */
   position: fixed; /* Fixed position to cover the whole viewport */
 
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
@@ -116,8 +118,16 @@ export default {
 }
 .rounded-box {
   width: 55px;
+  transition: width 0.3s ease-in-out;
 }
 .rounded-box.active {
   width: 150px;
+}
+.fade-enter-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
