@@ -1,15 +1,19 @@
 <template>
-  <div class="card card-side bg-primary-color">
-    <div class="card-body">
-      <h2 class="card-title">Syauqi Suhaimi</h2>
-      <p>Full Stack Dev</p>
-    </div>
-    <figure>
+  <div class="hero pt-40">
+    <div class="hero-content flex-col lg:flex-row">
+      <div>
+        <h1 class="text-5xl font-bold">Syauqi Suhaimi</h1>
+        <p class="py-6">
+          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+          excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
+          id nisi.
+        </p>
+      </div>
       <img
         src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-        alt="Movie"
+        class="max-w-sm rounded-lg shadow-2xl"
       />
-    </figure>
+    </div>
   </div>
 </template>
 
