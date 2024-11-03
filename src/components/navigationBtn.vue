@@ -1,19 +1,14 @@
 <template>
   <div class="navBody">
     <ul class="menu navigation gap-y-2">
-      <li
-        v-for="(nav, key) in navigation"
-        :key="key"
-        :class="
-          nav.active
-            ? 'bg-text-color text-primary-color rounded-box active'
-            : 'bg-base-200 rounded-box'
-        "
-      >
-        <router-link :to="{ name: nav.link }">
+      <li v-for="(nav, key) in navigation" :key="key" :class="nav.active
+        ? 'bg-text-color text-primary-color rounded-box active'
+        : 'bg-base-200 rounded-box'
+        ">
+        <router-link :to="{ name: nav.link }" class="pointer-events-none">
           <span class="material-symbols-outlined"> {{ nav.icon }} </span>
           <transition name="fade">
-            <div v-if="nav.active">{{ nav.name }}</div>
+            <div v-if="nav.active" class="hidden md:block">{{ nav.name }}</div>
           </transition>
         </router-link>
       </li>
@@ -24,30 +19,7 @@
 <script>
 export default {
   props: ["navigation"],
-  //   data() {
-  //     return {
-  //       navigation: [
-  //         {
-  //           name: "About Me",
-  //           link: "home",
-  //           icon: "person",
-  //           active: false,
-  //         },
-  //         {
-  //           name: "Experience",
-  //           link: "exp",
-  //           icon: "work",
-  //           active: false,
-  //         },
-  //         {
-  //           name: "Projects",
-  //           link: "about",
-  //           icon: "code",
-  //           active: false,
-  //         },
-  //       ],
-  //     };
-  //   },
+
   watch: {
     $route(to, from) {
       // Find the navigation item that matches the current route name
@@ -104,28 +76,60 @@ export default {
 
 <style>
 .navBody {
+
   display: flex;
   justify-content: left;
-  align-items: center;
-  height: 100dvh; /* Full height of the viewport */
-  z-index: 1; /* High z-index value to ensure it's above all other elements */
-  position: fixed; /* Fixed position to cover the whole viewport */
+  align-items: flex-start;
+  height: 100dvh;
+  /* Full height of the viewport */
+  z-index: 1;
+  /* High z-index value to ensure it's above all other elements */
+  position: absolute;
+  /* Fixed position to cover the whole viewport */
 
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
+
 .navigation {
-  position: fixed; /* Fixed position */
+  position: fixed;
+
+  /* Fixed position */
 }
+
+@media (max-width: 767px) {
+  .navigation {
+    background-color: rgba(83, 92, 145, 0.3);
+    flex-direction: row !important;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
 .rounded-box {
   width: 55px;
   transition: width 0.3s ease-in-out;
 }
-.rounded-box.active {
-  width: 150px;
+
+@media (min-width: 768px) {
+  .navBody {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100dvh;
+    /* Full height of the viewport */
+    z-index: 1;
+    /* High z-index value to ensure it's above all other elements */
+    position: absolute;
+  }
+
+  .rounded-box.active {
+    width: 150px;
+  }
 }
+
 .fade-enter-active {
   transition: opacity 0.3s;
 }
+
 .fade-enter,
 .fade-leave-to {
   opacity: 0;

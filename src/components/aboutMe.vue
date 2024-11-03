@@ -1,18 +1,15 @@
 <template>
-  <div class="hero pt-40">
+  <div class="hero pt-12 md:pt-40 text-center">
     <div class="hero-content flex-col lg:flex-row">
       <div>
         <h1 class="text-5xl font-bold">Syauqi Suhaimi</h1>
-        <p class="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-          id nisi.
+        <h1 class="text-3xl font-bold mt-3">Fullstack Developer</h1>
+        <p class="py-6 pt-1">
+          Passionate software developer focused on web and app development, with a preference for front-end. Skilled in
+          performance optimization and user experience, delivering reusable, efficient code in collaborative settings.
         </p>
       </div>
-      <img
-        src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-        class="max-w-sm rounded-lg shadow-2xl"
-      />
+      <!-- <img src="../assets/profile2.png" class="max-w-sm rounded-lg shadow-2xl h-60" /> -->
     </div>
   </div>
 </template>

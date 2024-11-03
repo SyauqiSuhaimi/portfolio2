@@ -1,17 +1,20 @@
 <template>
   <navigationBtn :navigation="navigation"></navigationBtn>
-  <div class="mainPage mx-auto mb-10">
+  <div class="w-full md:w-1/2 mx-auto mb-10">
     <!-- <router-view v-slot="{ Component }">
       <Transition name="route" mode="out-in">
         <component :is="Component"></component>
       </Transition>
     </router-view> -->
     <HomeView id="component1"></HomeView>
-    <workExp id="component2"></workExp>
-    <AboutView id="component3"></AboutView>
+    <skillsComp id="component2"></skillsComp>
+
+
+    <workExp id="component3" class="px-4"></workExp>
+    <AboutView id="component4" class="px-4"></AboutView>
   </div>
   <footerVue></footerVue>
-  <div class="customCursor" data-custom-cursor></div>
+  <div class="customCursor hidden md:block" data-custom-cursor></div>
 </template>
 
 <script>
@@ -20,9 +23,12 @@ import HomeView from "./views/HomeView.vue";
 import workExp from "./views/workExp.vue";
 import AboutView from "./views/AboutView.vue";
 import footerVue from "./components/footer.vue";
+import skillsComp from "./skillsComp.vue";
 export default {
   data() {
+
     return {
+
       navigation: [
         {
           name: "Me",
@@ -32,23 +38,30 @@ export default {
           target: "component1",
         },
         {
-          name: "Experience",
+          name: "Skills",
           link: "exp",
-          icon: "work",
+          icon: "code",
           active: false,
           target: "component2",
         },
         {
-          name: "Projects",
-          link: "about",
-          icon: "code",
+          name: "Experience",
+          link: "exp",
+          icon: "work",
           active: false,
           target: "component3",
+        },
+        {
+          name: "Projects",
+          link: "about",
+          icon: "apps",
+          active: false,
+          target: "component4",
         },
       ],
     };
   },
-  components: { navigationBtn, HomeView, workExp, AboutView, footerVue },
+  components: { navigationBtn, HomeView, workExp, AboutView, footerVue, skillsComp },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
 
@@ -65,7 +78,7 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
-    cursorMove(customCursor) {},
+    cursorMove(customCursor) { },
     handleScroll() {
       const scrollPosition =
         window.scrollY || document.documentElement.scrollTop;
@@ -75,8 +88,8 @@ export default {
           const elementPosition = element.offsetTop;
           const elementHeight = element.offsetHeight;
           const isVisible =
-            scrollPosition >= elementPosition - 200 &&
-            scrollPosition <= elementPosition + elementHeight - 200;
+            scrollPosition >= elementPosition - 300 &&
+            scrollPosition <= elementPosition + elementHeight - 300;
           item.active = isVisible;
         }
       });
@@ -88,12 +101,13 @@ export default {
 <style>
 :root {
   --primary-color: #070f2b;
+  /* rgba(7, 15, 43) #070f2b*/
   --secondary-color: #1b1a55;
+  /* rgba(27, 26, 85) #1b1a55*/
   --tertiary-color: #535c91;
+  /* rgba(83, 92, 145) #535c91*/
   --text-color: #9290c3;
-}
-.mainPage {
-  width: 50dvw;
+  /* rgba(83, 92, 145) #9290c3*/
 }
 
 body {
@@ -101,6 +115,7 @@ body {
   color: var(--text-color);
   cursor: none !important;
 }
+
 /* route transition */
 .route-enter-from {
   opacity: 0;
@@ -133,5 +148,16 @@ body {
   border-radius: 50%;
   z-index: 2;
   pointer-events: none;
+}
+
+.btn-custom {
+  border-color: #635985;
+  color: #bdafee !important;
+}
+
+.btn-custom:hover {
+  border-color: white;
+  color: #bdafee !important;
+  background-color: unset !important;
 }
 </style>

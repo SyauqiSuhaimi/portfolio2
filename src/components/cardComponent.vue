@@ -1,20 +1,19 @@
 <template>
   <div class="card1 image-full h-44">
-    <figure>
-      <img :src="item.image" alt="image" />
-    </figure>
+
+    <img :src="item.image" alt="image" />
 
     <div class="card1__content">
       <p class="card1__title">{{ item.title }}</p>
       <div class="card1__description">
         <p class="">{{ item.description }}</p>
-        <div
+        <!-- <div
           class="badge badge-outline mx-1 my-3"
           v-for="(tech, index) in item.tech"
           :key="index"
         >
           {{ tech }}
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -35,8 +34,9 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 250px;
+  width: 250px;
 }
 
 .card1:hover {
@@ -64,7 +64,7 @@ export default {
 
 .card1__title {
   margin: 0;
-  font-size: 24px;
+  font-size: 16px;
   color: var(--primary-color);
   font-weight: 700;
 }

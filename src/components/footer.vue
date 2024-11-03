@@ -1,16 +1,12 @@
 <template>
-  <footer
-    class="footer items-center p-4 bg-text-color text-primary-color place-self-center"
-  >
+  <footer class="footer items-center p-4 bg-text-color text-primary-color place-self-center">
     <aside class="items-center grid-flow-col">
-      <p>Made with Vue, Tailwind and Love</p>
-      <span class="material-symbols-outlined"> favorite </span>
+      <p>Copyright © 2024 - All right reserved</p>
     </aside>
     <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
       <template v-for="(item, index) in footer" :key="index">
         <a :href="item.link" target="_blank" :data-bs-title="item.tooltip">
-          <i :class="`fa fa-lg ${item.icon}`" aria-hidden="true"></i
-        ></a>
+          <i :class="`fa fa-lg ${item.icon}`" aria-hidden="true"></i></a>
       </template>
     </nav>
   </footer>
@@ -23,7 +19,7 @@ export default {
       footer: [
         {
           icon: "fa-file-text",
-          link: "https://drive.google.com/file/d/1U7iPTvZxcgbfaeqW8UL_Lt7QiXu17JiZ/view?usp=sharing",
+          link: "https://drive.google.com/file/d/1hRuiT2narXGxGANctYuwpxc3RKvdBr18/view?usp=sharing",
           tooltip: "Download Resume",
         },
         {
@@ -44,4 +40,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.footer {
+  row-gap: 1rem;
+}
+</style>

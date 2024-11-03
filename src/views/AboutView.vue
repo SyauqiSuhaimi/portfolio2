@@ -1,17 +1,13 @@
 <template>
-  <div class="grid gap-y-5">
-    <cardComponent
-      v-for="(p, index) in project"
-      :key="index"
-      :item="p"
-    ></cardComponent>
+  <div class="flex gap-y-5 justify-evenly flex-wrap">
+    <cardComponent v-for="(p, index) in project" :key="index" :item="p"></cardComponent>
   </div>
 </template>
 
 <script>
 import fmsImage from "../assets/fms.png";
-import nftImage from "../assets/nft2.png";
-import wiseImage from "../assets/wise.png";
+import nftImage from "../assets/nft3.png";
+import wiseImage from "../assets/wise2.png";
 import cardComponent from "@/components/cardComponent.vue";
 export default {
   components: { cardComponent },
@@ -22,7 +18,7 @@ export default {
           no: 1,
           title: "Facility Management System",
           description:
-            "Software solution designed to help organizations efficiently manage and optimize their physical assets and facilities. This includes buildings, equipment, resources, and other assets critical to the organization's operations.",
+            "Software solution designed to help organizations efficiently manage and tracks their physical assets and facilities.",
           link: "http://myces-fms.com/#/Home",
           tech: [
             "Vue JS",
@@ -48,7 +44,7 @@ export default {
           no: 3,
           title: "Wise Premium",
           description:
-            "Designed using Vue.js and featuring multilingual support in Mandarin and English, this responsive website serves as the gateway to an exclusive club experience. Explore a world of luxury living, concierge services, lucrative affiliate programs, and more.",
+            "Designed using Vue.js and featuring multilingual support in Mandarin and English, this responsive website serves as the gateway to an exclusive club experience.",
           link: "http://178.128.49.253/",
 
           tech: ["Vue JS", "HTML/CSS", "Javascript", "Bootstrap"],
