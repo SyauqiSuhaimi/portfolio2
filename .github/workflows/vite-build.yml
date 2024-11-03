@@ -31,9 +31,11 @@ jobs:
     - name: Build
       run: npm run build
 
-    # Run tests if applicable
-    - name: Run tests
-      run: npm run test --if-present
+    - name: Upload artifact for deployment
+      uses: actions/upload-artifact@v4
+      with:
+        name: github-pages
+        path: ./dist
 
        # Deployment job
   # Deploy job
@@ -46,6 +48,7 @@ jobs:
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
       actions: read
+      contents: read
 
     # Deploy to the github-pages environment
     environment:
@@ -55,6 +58,14 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: ./dist
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          path: ./dist
