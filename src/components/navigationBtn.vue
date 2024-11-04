@@ -5,12 +5,19 @@
         ? 'bg-text-color text-primary-color rounded-box active'
         : 'bg-base-200 rounded-box'
         ">
-        <router-link :to="{ name: nav.link }" class="group-hover:cursor-none" @click="emitGoTo(nav.target)">
+        <!-- <router-link :to="{ name: nav.link }" class="group-hover:cursor-none" @click="emitGoTo(nav.target)">
           <span class="material-symbols-outlined"> {{ nav.icon }} </span>
           <transition name="fade">
             <div v-if="nav.active" class="hidden md:block">{{ nav.name }}</div>
           </transition>
-        </router-link>
+        </router-link> -->
+
+        <div :to="{ name: nav.link }" class="group-hover:cursor-none" @click="emitGoTo(nav.target)">
+          <span class="material-symbols-outlined"> {{ nav.icon }} </span>
+          <transition name="fade">
+            <div v-if="nav.active" class="hidden md:block">{{ nav.name }}</div>
+          </transition>
+        </div>
       </li>
     </ul>
   </div>

@@ -25,7 +25,7 @@ import HomeView from "./views/HomeView.vue";
 import workExp from "./views/workExp.vue";
 import AboutView from "./views/AboutView.vue";
 import footerVue from "./components/footer.vue";
-import skillsComp from "./skillsComp.vue";
+import skillsComp from "./components/skillsComp.vue";
 export default {
   data() {
 
@@ -163,16 +163,5 @@ body {
   border-radius: 50%;
   z-index: 2;
   pointer-events: none;
-}
-
-.btn-custom {
-  border-color: #635985;
-  color: #bdafee !important;
-}
-
-.btn-custom:hover {
-  border-color: white;
-  color: #bdafee !important;
-  background-color: unset !important;
 }
 </style>
