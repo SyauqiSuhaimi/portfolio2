@@ -1,5 +1,6 @@
 <template>
-  <navigationBtn :navigation="navigation"></navigationBtn>
+  <SpeedInsights />
+  <navigationBtn :navigation="navigation" @go-to="scrollTo"></navigationBtn>
   <div class="w-full md:w-1/2 mx-auto mb-10">
     <!-- <router-view v-slot="{ Component }">
       <Transition name="route" mode="out-in">
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 import navigationBtn from "./components/navigationBtn.vue";
 import HomeView from "./views/HomeView.vue";
 import workExp from "./views/workExp.vue";
@@ -36,6 +38,7 @@ export default {
           icon: "person",
           active: false,
           target: "component1",
+          position: 100,
         },
         {
           name: "Skills",
@@ -43,6 +46,7 @@ export default {
           icon: "code",
           active: false,
           target: "component2",
+          position: 100,
         },
         {
           name: "Experience",
@@ -50,6 +54,7 @@ export default {
           icon: "work",
           active: false,
           target: "component3",
+          position: 100,
         },
         {
           name: "Projects",
@@ -57,11 +62,12 @@ export default {
           icon: "apps",
           active: false,
           target: "component4",
+          position: 100,
         },
       ],
     };
   },
-  components: { navigationBtn, HomeView, workExp, AboutView, footerVue, skillsComp },
+  components: { navigationBtn, HomeView, workExp, AboutView, footerVue, skillsComp, SpeedInsights },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
 
@@ -78,7 +84,16 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
-    cursorMove(customCursor) { },
+    scrollTo(elementId) {
+      const element = document.getElementById(elementId);
+      if (element) {
+        const position = element.offsetTop - 70;
+        window.scrollTo({
+          top: position,
+          behavior: 'smooth'
+        });
+      }
+    },
     handleScroll() {
       const scrollPosition =
         window.scrollY || document.documentElement.scrollTop;
@@ -88,8 +103,8 @@ export default {
           const elementPosition = element.offsetTop;
           const elementHeight = element.offsetHeight;
           const isVisible =
-            scrollPosition >= elementPosition - 300 &&
-            scrollPosition <= elementPosition + elementHeight - 300;
+            scrollPosition >= elementPosition - 250 &&
+            scrollPosition <= elementPosition + elementHeight - 250;
           item.active = isVisible;
         }
       });
