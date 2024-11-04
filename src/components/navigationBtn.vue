@@ -1,11 +1,11 @@
 <template>
   <div class="navBody">
     <ul class="menu navigation gap-y-2">
-      <li v-for="(nav, key) in navigation" :key="key" :class="nav.active
+      <li v-for="(nav, key) in navigation" :key="key" class="group" :class="nav.active
         ? 'bg-text-color text-primary-color rounded-box active'
         : 'bg-base-200 rounded-box'
         ">
-        <router-link :to="{ name: nav.link }" class="" @click="emitGoTo(nav.target)">
+        <router-link :to="{ name: nav.link }" class="group-hover:cursor-none" @click="emitGoTo(nav.target)">
           <span class="material-symbols-outlined"> {{ nav.icon }} </span>
           <transition name="fade">
             <div v-if="nav.active" class="hidden md:block">{{ nav.name }}</div>
@@ -78,6 +78,10 @@ export default {
 </script>
 
 <style>
+.no-cursor:hover {
+  cursor: none !important;
+}
+
 .navBody {
 
   display: flex;
